@@ -1,0 +1,30 @@
+
+const int led = 12;
+const int buzzer = 11;
+const int irsensor = 10;
+int irvalue ;
+
+void setup() {
+  // put your setup code here, to run once:
+pinMode (irsensor, INPUT);
+pinMode (led, OUTPUT);
+pinMode (buzzer, OUTPUT);
+
+Serial.begin(9600);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+irvalue = digitalRead(irsensor);
+if (irvalue == LOW){
+  digitalWrite(buzzer, HIGH);
+  digitalWrite(led, HIGH);
+  Serial.println("obj detected");
+} else {
+  digitalWrite(buzzer, LOW);
+  digitalWrite(led, LOW);
+  Serial.println("all ok");
+}
+delay(500);
+}
